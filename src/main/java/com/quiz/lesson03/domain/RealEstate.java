@@ -2,7 +2,7 @@ package com.quiz.lesson03.domain;
 
 import java.time.LocalDateTime;
 
-public class Real_estate {
+public class RealEstate {
 	private int id;
 	private int realtorId;
 	private String address;
