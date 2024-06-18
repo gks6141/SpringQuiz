@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.quiz.lesson03.bo.RealEstateBO;
 
-
+@RequestMapping("/lesson03/quiz03")
 @RestController
 public class Lesson03Quiz03RestController {
 	@Autowired
 	private RealEstateBO realEstateBO;
 	
-	@RequestMapping("/lesson03/quiz03")
+	@RequestMapping("/1")
 	public String quiz03_1(
 			@RequestParam("id") int id,
 			@RequestParam("type") String type,
