@@ -34,8 +34,13 @@ public interface RealEstateMapper {
 			@Param("price") int price, 
 			@Param("rentPrice") int rentPrice);
 	
-	public int updateRealEstate(
+	//input : id, type, price
+	//output: int
+	//데이터 수정
+	public int updateRealEstateById(
 			@Param("id") int id, 
 			@Param("type") String type, 
 			@Param("price") int price);
+	
+	public int deleteRealEstateById(int id);
 }
