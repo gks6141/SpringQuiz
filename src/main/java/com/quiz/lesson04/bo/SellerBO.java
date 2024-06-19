@@ -12,7 +12,9 @@ public class SellerBO {
 	@Autowired
 	private SellerMapper sellerMapper;
 	
-	public void addSeller(String nickname, String profileImageUrl, Double temperature) {
+	//input : 파라미터들
+	//output: ㅌ
+	public void addSeller(String nickname, String profileImageUrl, double temperature) {
 		sellerMapper.insertSeller(nickname, profileImageUrl, temperature);
 	}
 	

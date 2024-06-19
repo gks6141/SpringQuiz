@@ -24,22 +24,32 @@ public class Lesson04Quiz01Controller {
 		return "lesson04/addSeller";
 	}
 	
+	//DB 저장
 	@PostMapping("/add-seller")
 	public String quiz01_1(
 			@RequestParam("nickname") String nickname,
 			@RequestParam(value = "profileImageUrl" ,required = false) String profileImageUrl,
-			@RequestParam(value = "temperature" ,required = false) Double temperature){
+			@RequestParam(value = "temperature", defaultValue = "36.5") double temperature){
 		//DB insert
 		sellerBO.addSeller(nickname, profileImageUrl, temperature);
 		
 		return "lesson04/afterAddSeller";
 	}
 	
+	//방금 가입한 판매자 1명
 	@GetMapping("seller-info-view")
-	public String quiz01_2(Model model) {
-		Seller seller = sellerBO.getLatestSeller();
+	public String quiz01_2(Model model, 
+			@RequestParam(value = "id" , required = false) Integer id) {
+		Seller seller = new Seller(); //null
+		if(id != null) {
+			seller = sellerBO.getSellerById(id);
+		} else {
+			seller = sellerBO.getLatestSeller();			
+		}
 		
+		//모델에 데이터를 담아둔다.
 		model.addAttribute("result", seller);
+		model.addAttribute("title", "판매자 정보");
 		
 		return "lesson04/latestSeller";
 	}
