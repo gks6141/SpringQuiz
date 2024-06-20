@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,17 +23,15 @@ public class Lesson04Quiz02Controller {
 	}
 	
 	@PostMapping("/add-realtor")
-	public String quiz04_1(Realtor realtor,Model model) {
+	public String quiz04_1(
+			@ModelAttribute Realtor realtor,Model model) {
 		
 		//insert
 		realtorBO.addRealtor(realtor);
-		//id얻기
-		
-		//select
-		
+		//동적 id로 select
+		realtor = realtorBO.getRealtorById(realtor.getId());
 		//model
-		model.addAttribute("title","공인중개사 추가");
-		model.addAttribute("result");
+		model.addAttribute("result",realtor);
 		
 		return "lesson04/addLatestRealtor";
 	}
