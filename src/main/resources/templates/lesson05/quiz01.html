@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<h1>1. 변수</h1>
+	<p>첫번째 숫자: <span th:text="${i}"></span></p>
+	<p>두번째번째 숫자: <span th:text="${j}"></span></p>
+</div>
+<div>
+	<h1>2. 변수</h1>
+	<p>더하기: <span th:text="${i+j}"></span></p>
+	<p>뺴기: <span th:text="${i-j}"></span></p>
+	<p>곱하기: <span th:text="${i*j}"></span></p>
+	<p>나누기: <span th:text="${i/j}"></span></p>
+</div>
+<div>
+	<h1>3. 변수</h1>
+	<span th:utext="(${i+j/2} >= 10)? '<h1>${i+j/2}</h1>' : '<h3>${i+j/2}</h3>'"></span>
+</div>
+<div>
+	<h1>4. 변수</h1>
+	<span th:utext="(${i+j/2} >= 10)? '<h1>${i+j/2}</h1>' : '<h3>${i+j/2}</h3>'"></span>
+</div>
+</body>
+</html>
