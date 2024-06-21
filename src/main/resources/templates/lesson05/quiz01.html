@@ -2,28 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Quiz01</title>
 </head>
 <body>
-<div>
-	<h1>1. 변수</h1>
-	<p>첫번째 숫자: <span th:text="${i}"></span></p>
-	<p>두번째번째 숫자: <span th:text="${j}"></span></p>
-</div>
-<div>
-	<h1>2. 변수</h1>
-	<p>더하기: <span th:text="${i+j}"></span></p>
-	<p>뺴기: <span th:text="${i-j}"></span></p>
-	<p>곱하기: <span th:text="${i*j}"></span></p>
-	<p>나누기: <span th:text="${i/j}"></span></p>
-</div>
-<div>
-	<h1>3. 변수</h1>
-	<span th:utext="(${i+j/2} >= 10)? '<h1>${i+j/2}</h1>' : '<h3>${i+j/2}</h3>'"></span>
-</div>
-<div>
-	<h1>4. 변수</h1>
-	<span th:utext="(${i+j/2} >= 10)? '<h1>${i+j/2}</h1>' : '<h3>${i+j/2}</h3>'"></span>
-</div>
+	<th:block th:with="i=36, j=3">
+		<h1>1. 변수</h1>
+		<h2 th:text="'첫번째 숫자:' +${i}"></h2>
+		<h2 th:text="|두번째 숫자: ${j}|"></h2>
+		
+		<h1>2. 산술연산</h1>
+		<h2 th:text="|더하기: ${i+j}|"></h2>
+		<h2 th:text="|뺴기: ${i-j}|"></h2>
+		<h2 th:text="'곱하기: ' + ${i*j}"></h2>
+		<h2 th:text="'나누기: ' + ${i/j}"></h2>
+		<h1>3. 태그 그대로 출력</h1>
+		<h2 th:utext="'<h3>안녕하세요</h3>'"></h2>
+		<h1>4. if와 unless</h1>
+		<th:block th:with="avg=${(i+j)/2.0}">
+			<div th:if="${avg >= 10}">
+				<h1 th:text="${avg}"></h1>
+			</div>
+			<h3 th:unless="${avg >= 10}" th:text="${avg}"></h3>
+		</th:block>
+	</th:block>
+	
+	
+	<!-- 소수점 나타낼때는 .0을 붙여 자료형을 double형식으로 변경해야 된다. -->
+	<!--
+	<div th:with="i=36.0, j=3.0">
+		<h1>4. if와 unless</h1>
+		<div th:if="${(i+j)/2 >= 10}"><h3 th:text="${(i+j)/2}"></h3></div>
+		<div th:unless="${(i+j)/2 >= 10}"><h3 th:text="${(i+j)/2}"></h3></div>
+	</div>
+	 -->
 </body>
 </html>
