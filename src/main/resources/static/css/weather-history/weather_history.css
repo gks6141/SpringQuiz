@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.wrap {
+	width:1200px;
+}
+
+nav {
+	min-height:400px;
+	background-color : cornflowerblue;
+}
+
+section {
+	min-height:400px
+}
+
+footer {
+	height:80px
+}
+
+.nav-link{
+	color: white;
+	font-size:15px;
+	font-weight:bold;
+}
+
+.input-label {
+    width:130px;
+    text-align: right;
+    margin-right:10px;
+}
