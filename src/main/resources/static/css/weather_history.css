@@ -1,2 +1,18 @@
 @charset "UTF-8";
+nav {
+	min-height:400px
+}
 
+section {
+	min-height:400px
+}
+
+footer {
+	height:80px
+}
+
+.nav-link{
+	color: white;
+	font-size:15px;
+	font-weight:bold;
+}
