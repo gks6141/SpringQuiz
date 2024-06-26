@@ -20,7 +20,10 @@ public class StoreBO {
 	public List<Store> getStoreList(){
 //		List<Store> storeList = storeMapper.selectStoreList();
 //		return storeList; //컨트롤러한테 전달
-		return storeMapper.selectStoreList();
-		
+		return storeMapper.selectStoreList();	
+	}
+	
+	public List<Store> getStoreByStoreId(int StoreId){
+		return storeMapper.selectStoreByStoreId(StoreId);	
 	}
 }

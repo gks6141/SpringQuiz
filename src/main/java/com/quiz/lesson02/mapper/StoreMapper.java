@@ -12,4 +12,6 @@ public interface StoreMapper {
 	// input: x
 	// output: List<Store>
 	public List<Store> selectStoreList();
+	
+	public List<Store> selectStoreByStoreId(int StoreId);
 }
