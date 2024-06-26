@@ -5,7 +5,7 @@
  	<select id="selectStoreList" resultType="com.quiz.lesson02.domain.Store">
  		SELECT
  			`id`
-			,`store`
+			,`name`
 			,`phoneNumber`
 			,`address`
 			,`businessNumber`

@@ -10,17 +10,21 @@
 	<link rel="stylesheet" type="text/css" href="/css/store-review/storeReview.css">
 </head>
 <body>
-	<div id="wrap" class="container bg-secondary">
+	<div id="wrap" class="container">
 		<header class="bg-info d-flex align-items-center pl-3">
 			<h2>배탈의 민족</h2>
 		</header>
-		<section class="bg-danger">
+		<!-- <a th:href="|/lesson05/quiz06/reviews?storeId=${store.id}&toreName=${store.store}|"></a> -->
+		<section>
 			<span class="display-4 pt-2">우리동네 가게</span>
 			<div id="box" th:each="store :${stores}">
-			<a th:href="|/lesson05/quiz06/reviews?storeId=${store.id}&toreName=${store.store}|"></a></div>
+			<h3 th:text="${store.name}"></h3>
+			<span th:text="|전화번호 : ${store.phoneNumber}|"></span><br>
+			<span th:text="|주소 : ${store.address}|"></span>
+			</div>
 		</section>
 		<hr>
-		<footer class="bg-primary">
+		<footer>
 			<h5>(주)우와한형제</h5>
 			<small class="text-secondary">고객센터:1500-1500</small>
 		</footer>

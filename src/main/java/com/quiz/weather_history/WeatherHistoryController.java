@@ -37,9 +37,18 @@ public class WeatherHistoryController {
 	//@DateTimeFormat() annotation
 	//@RequestParam("startDate") @DateTimeFormat(iso = ISO.DATE_TIME) LocalDate startDate 
 	//@RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate
+//	@RequestParam("date") localDate date;
+//	@RequestParam("weather")
+//	@RequestParam("microDust")	
+//	@RequestParam("temperatures")
+//	@RequestParam("precipitation")
+//	@RequestParam("windSpeed")
+	
 	@PostMapping("/add-weather")
 	public String addWeather(WeatherHistory weatherHistory) {
+		//db insert
 		weatherHistoryBO.addWeatherHistory(weatherHistory);
+		//redirect => 날씨 목록
 		return "redirect:/weather-history/weather-list-view";
 	}
 	
