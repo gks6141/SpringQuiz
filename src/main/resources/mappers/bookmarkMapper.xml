@@ -30,5 +30,21 @@
 	FROM
 		`bookmark`
 	</select>
-		
+	<select id="isDuplication" resultType="boolean">
+	SELECT
+		COUNT(*)
+	FROM
+		`bookmark`
+	WHERE
+		`url` = #{url}
+	</select>	
+	
+	<delete id="deleteBookmark">
+	DELETE FROM 
+		`bookmark` 
+	WHERE 
+		`id` = #{id}
+	
+	</delete>
+	
 </mapper>
