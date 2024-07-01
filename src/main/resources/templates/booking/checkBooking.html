@@ -9,6 +9,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" type="text/css" href="/css/booking/style.css">
+    
+    <script>
+    $(document).ready(function(){
+    	$("#checkBookingBtn").on('click',function(){
+    		let name = $("#name").val().trim();
+    		let phoneNumber = $("#phoneNumber").val().trim();
+    		if(!name){
+    			alert("이름을 입력해주세요.");
+    			return;
+    		}
+    		if(!phoneNumber){
+    			alert("전화번호를 입력해주세요.");
+    			return;
+    		}
+    		
+    		console.log(name);
+    		console.log(phoneNumber);
+    		
+    		$.ajax({
+    			type:"post"
+    			,url:"/booking/select-booking"
+    			,data:{"name":name, "phoneNumber":phoneNumber}
+    			,success:function(data){
+    				if(data.code == 200){
+    					$(data.booking).each(function(){
+    						alert("이름:"+this.name +"\n"
+    								+"날짜:"+ this.date +"\n"
+    								+"일수:"+ this.day +"\n"
+    								+"인원:"+ this.headcount +"\n"
+    								+"상태:"+ this.state
+    								);
+    					})
+    				} else if (data.code == 500){
+    					alert("예약 내역이 없습니다.")
+    				}
+    			}
+    			,error:function(error){
+    				alert("관리자에게 문의 해주세요.");
+    			}
+    			
+    		});
+    		
+    	});
+    });
+    
+    </script>
 </head>
 <body>
 	<div id="wrap" class="container">
