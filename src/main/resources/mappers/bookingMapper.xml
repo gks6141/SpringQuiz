@@ -48,7 +48,7 @@
  	)
  	</insert>
  	
- 	<select id="selectBookingByName" resultType="com.quiz.booking.domain.Booking">
+ 	<select id="selectBookingByName" parameterType="map" resultType="com.quiz.booking.domain.Booking">
  		SELECT
  			`id`
 			,`name`
@@ -63,9 +63,5 @@
 			`booking`
 		WHERE
 			`name`= #{name} and `phoneNumber`= #{phoneNumber}
-		ORDER BY
-			`day` DESC 
-		LIMIT
-			1;
  	</select>
  </mapper>

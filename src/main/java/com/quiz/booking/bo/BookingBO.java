@@ -28,7 +28,10 @@ public class BookingBO {
 		bookingMapper.insertBooking(name, date, day, headcount, phoneNumber);
 	}
 	
-	public List<Booking> getBookingByName(String name, String phoneNumber){
-		return bookingMapper.selectBookingByName(name, phoneNumber);
+	//output: booking or null
+	public Booking getBookingByName(String name, String phoneNumber){
+		//없을 떄: []    있을떄:[booking, booking1]
+		List<Booking> bookingList = bookingMapper.selectBookingByName(name, phoneNumber);
+		return bookingList.isEmpty() ? null : bookingList.get(bookingList.size()-1);
 	}
 }

@@ -34,15 +34,18 @@
     			,success:function(data){
     				if(data.code == 200){
     					$(data.booking).each(function(){
-    						alert("이름:"+this.name +"\n"
-    								+"날짜:"+ this.date +"\n"
-    								+"일수:"+ this.day +"\n"
-    								+"인원:"+ this.headcount +"\n"
-    								+"상태:"+ this.state
+    						console.log(data.result);
+    						alert("이름:"+this.name
+    								+"\n날짜:"+ this.date
+    								+"\n일수:"+ this.day
+    								+"\n인원:"+ this.headcount
+    								+"\n상태:"+ this.state
     								);
     					})
     				} else if (data.code == 500){
-    					alert("예약 내역이 없습니다.")
+    					console.log(data.error_message);
+    					alert("예약 내용이 없습니다.")
+    					
     				}
     			}
     			,error:function(error){

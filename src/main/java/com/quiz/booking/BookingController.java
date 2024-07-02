@@ -97,16 +97,16 @@ public class BookingController {
 			@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber){
 		
-		List<Booking> booking = bookingBO.getBookingByName(name, phoneNumber);
+		Booking booking = bookingBO.getBookingByName(name, phoneNumber);
 		
 		Map<String, Object> result = new HashMap<>();
-		if(booking.size()>0) {
-			result.put("booking", booking.get(0));
+		if(booking != null) {
+			result.put("booking", booking);
 			result.put("code", 200);
 			result.put("result", "성공");
 		} else {
 			result.put("code", 500);
-			result.put("result", "해당내용없음");
+			result.put("error_message", "해당내용없음");
 		}
 		return result;
 	}
