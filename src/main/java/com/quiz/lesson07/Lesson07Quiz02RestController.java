@@ -18,15 +18,34 @@ public class Lesson07Quiz02RestController {
 	@Autowired
 	private RecruitRepository recruitRepository;
 	
-	@GetMapping("1")
+	@GetMapping("/1")
 	public Optional<RecruitEntity> selectById(){
 		return recruitRepository.findById(8);
-		
 	}
 	
-	@GetMapping("2")
+	
+	@GetMapping("/2")
 	public List<RecruitEntity> selectByParameter(){
 		return recruitRepository.findByCompanyId(1);
-		
+	}
+	
+	@GetMapping("/3")
+	public List<RecruitEntity> selectByPositionAndType(){
+		return recruitRepository.findByPositionAndType("웹 back-end 개발자", "정규직");
+	}
+	
+	@GetMapping("/4")
+	public List<RecruitEntity> selectByTypeOrSalaryGreaterThanEqual(){
+		return recruitRepository.findByTypeOrSalaryGreaterThanEqual("정규직", 9000);
+	}
+	
+	@GetMapping("/5")
+	public List<RecruitEntity> selectTop3ByTypeByOrderBySalaryDesc(){
+		return recruitRepository.findTop3ByTypeOrderBySalaryDesc("계약직");
+	}
+	
+	@GetMapping("/6")
+	public List<RecruitEntity> selectByRegionAndSalaryBetween(){
+		return recruitRepository.findByRegionAndSalaryBetween("성남시 분당구",7000,8500);
 	}
 }
