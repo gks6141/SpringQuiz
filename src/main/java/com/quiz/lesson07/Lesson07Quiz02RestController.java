@@ -1,11 +1,11 @@
 package com.quiz.lesson07;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quiz.lesson07.entity.RecruitEntity;
@@ -19,14 +19,15 @@ public class Lesson07Quiz02RestController {
 	private RecruitRepository recruitRepository;
 	
 	@GetMapping("/1")
-	public Optional<RecruitEntity> selectById(){
-		return recruitRepository.findById(8);
+	public RecruitEntity selectById(){
+		return recruitRepository.findById(8).orElse(new RecruitEntity());
 	}
 	
 	
 	@GetMapping("/2")
-	public List<RecruitEntity> selectByParameter(){
-		return recruitRepository.findByCompanyId(1);
+	public List<RecruitEntity> selectByParameter(
+			@RequestParam("companyId") int companyId){
+		return recruitRepository.findByCompanyId(companyId);
 	}
 	
 	@GetMapping("/3")
@@ -47,5 +48,10 @@ public class Lesson07Quiz02RestController {
 	@GetMapping("/6")
 	public List<RecruitEntity> selectByRegionAndSalaryBetween(){
 		return recruitRepository.findByRegionAndSalaryBetween("성남시 분당구",7000,8500);
+	}
+	
+	@GetMapping("/7")
+	public List<RecruitEntity> quiz07(){
+		return recruitRepository.findByDeadLineSalaryType("2026-04-10",8100,"정규직");
 	}
 }
